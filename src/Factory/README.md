@@ -87,9 +87,7 @@ class Devil extends Character
 }
 ```
 
-Una vez que ya hemos definido nuestra clase base junto con dos personajes,
-
-vamos a continuar definiendo lo que va a ser nuestra fabrica base para crear personajes.
+a continuación definiremos lo que va a ser nuestra fabrica base para crear personajes.
 
 
 ```php
