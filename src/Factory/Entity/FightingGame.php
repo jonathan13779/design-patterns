@@ -21,6 +21,16 @@ class FightingGame
         $this->luckyMaxRange = $this->characterOne->getLuck() + $this->characterTwo->getLuck();
 
         $this->configureCharacters();
+        $this->welcome();
+
+    }
+
+    private function welcome(): void
+    {
+        echo "Welcome to the fighting game!\n";
+        echo "The first character is a {$this->characterOne->getCategory()} with {$this->characterOne->getVitality()} vitality and {$this->characterOne->getLuck()} luck\n";
+        echo "The second character is a {$this->characterTwo->getCategory()} with {$this->characterTwo->getVitality()} vitality and {$this->characterTwo->getLuck()} luck\n";
+        echo "Let's fight!\n\n";
     }
 
     private function configureCharacters(): void
@@ -39,9 +49,12 @@ class FightingGame
     {
         sleep(1);
         $lucky = $this->getLucky();
+        echo "The lucky number is {$lucky}\n";
         $this->attack($this->characterOne, $this->characterTwo, $lucky);
         if ($this->continueFight($this->characterOne, $this->characterTwo)) {
+            $this->showStats();
             $this->fight();
+
         }
         else{
             $winner = $this->getWinner();
@@ -52,15 +65,15 @@ class FightingGame
 
     private function getLucky(): int
     {
-        return rand(0, $this->luckyMaxRange);
+        return rand(1, $this->luckyMaxRange);
     }
 
     private function attack(Character $characterOne, Character $characterTwo , int $lucky){
         if($characterOne->hasLucky($lucky)){
-            $characterOne->attack($characterTwo);
+            $characterOne->attack($characterTwo, $lucky);
         }
         else{
-            $characterTwo->attack($characterOne);
+            $characterTwo->attack($characterOne, $lucky);
         }
     }
  
@@ -68,6 +81,12 @@ class FightingGame
     private function continueFight(Character $characterOne, Character $characterTwo): bool
     {
         return $characterOne->getVitality() > 0 && $characterTwo->getVitality() > 0;
+    }
+
+    private function showStats(): void
+    {
+        echo "The {$this->characterOne->getCategory()} have {$this->characterOne->getVitality()} \n";
+        echo "The {$this->characterTwo->getCategory()} have {$this->characterTwo->getVitality()} \n\n";
     }
 
     public function getWinner(): Character

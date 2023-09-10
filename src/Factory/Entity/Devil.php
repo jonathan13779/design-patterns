@@ -1,18 +1,18 @@
-<?php
+<?php 
 
 namespace Jonathan13779\DesignPaterns\Factory\Entity;
 
 use Jonathan13779\DesignPaterns\Factory\Entity\Character;
 
-class Magician extends Character
+class Devil extends Character
 {
     public function __construct()
     {
         parent::__construct(
-            force: 20,
-            vitality: 60,
-            luck: 9,
-            category: 'Magician'
+            force: 30,
+            vitality: 95,
+            luck: 7,
+            category: 'Devil'
         );
     }
 }

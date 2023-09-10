@@ -2,13 +2,13 @@
 
 namespace Jonathan13779\DesignPaterns\Factory\Factory;
 
-use Jonathan13779\DesignPaterns\Factory\Entity\Barbarian;
 use Jonathan13779\DesignPaterns\Factory\Entity\Character;
+use Jonathan13779\DesignPaterns\Factory\Entity\Elf;
 
-class BarbarianFactory extends BaseFactory{
-
+class ElfFactory extends BaseFactory
+{
     public function create(): Character
     {
-        return new Barbarian();
+        return new Elf();
     }
 }

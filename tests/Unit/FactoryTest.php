@@ -27,4 +27,26 @@ class FactoryTest extends TestCase
         $magician = $magicianFactory->create();
         $this->assertInstanceOf(\Jonathan13779\DesignPaterns\Factory\Entity\Magician::class, $magician);
     }
+
+    public function testFactoryDevil()
+    {
+        $devilFactory = new \Jonathan13779\DesignPaterns\Factory\Factory\DevilFactory();
+        $devil = $devilFactory->create();
+        $this->assertInstanceOf(\Jonathan13779\DesignPaterns\Factory\Entity\Devil::class, $devil);
+    }
+
+    public function testFactoryDwarf()
+    {
+        $dwarfFactory = new \Jonathan13779\DesignPaterns\Factory\Factory\DwarfFactory();
+        $dwarf = $dwarfFactory->create();
+        $this->assertInstanceOf(\Jonathan13779\DesignPaterns\Factory\Entity\Dwarf::class, $dwarf);
+    }
+
+    public function testFactoryElf()
+    {
+        $elfFactory = new \Jonathan13779\DesignPaterns\Factory\Factory\ElfFactory();
+        $elf = $elfFactory->create();
+        $this->assertInstanceOf(\Jonathan13779\DesignPaterns\Factory\Entity\Elf::class, $elf);
+
+    }    
 }

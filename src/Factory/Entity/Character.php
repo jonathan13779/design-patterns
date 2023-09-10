@@ -44,10 +44,25 @@ abstract class Character{
         return $lucky >= $this->luckyRange[0] && $lucky <= $this->luckyRange[1];
     }
 
-    public function attack(Character $character): void
+    public function attack(Character $character, int $luck): void
     {
-        $character->setVitality($character->getVitality() - $this->force);
-        echo "{$this->category} attack {$character->getCategory()} with {$this->force} force\n";
+        $force = $this->calculateForce($luck);
+        $character->setVitality($character->getVitality() - $force);
+        echo "{$this->category} attack {$character->getCategory()} with {$force} force\n";
+    }
+
+    private function calculateForce(int $luck): int
+    {
+        
+        $min = 0;
+        $max = $this->luckyRange[1] - $this->luckyRange[0];
+        $luck = $luck - $this->luckyRange[0];
+        $percentage = $luck*100/$max;
+        echo "Percentage: {$percentage}\n";
+        $force = intval($this->force * $percentage/100);
+        echo "Force: {$force}\n";
+        return $force;
+        
     }
 
     private function setVitality(int $vitality): void
